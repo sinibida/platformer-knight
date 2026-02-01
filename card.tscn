@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dm2srf7mg5jp1"]
+
+[ext_resource type="Texture2D" uid="uid://djlgvbigheovh" path="res://card_frame_back_blue.png" id="1_kikvd"]
+[ext_resource type="Script" uid="uid://medfm0n5ni1b" path="res://card.gd" id="1_rjlel"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjlel"]
+font_size = 8
+
+[node name="Card" type="Node2D" unique_id=1399974090]
+script = ExtResource("1_rjlel")
+text = "Temp Text"
+
+[node name="CardFrameBackBlue" type="Sprite2D" parent="." unique_id=725812413]
+scale = Vector2(0.3334868, 0.3334868)
+texture = ExtResource("1_kikvd")
+
+[node name="Content" type="Label" parent="." unique_id=378921300]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -34.0
+offset_right = 24.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Temp Text"
+label_settings = SubResource("LabelSettings_rjlel")
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://bov2g4coquf4u"]
+
+[ext_resource type="Texture2D" uid="uid://c3lca164r3prg" path="res://world_tileset.png" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://gwjlibdysaqb" path="res://knight.gd" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ch1t25c21bmv5" path="res://knight.png" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://c3gdn1tdgw500" path="res://follow.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dm2srf7mg5jp1" path="res://card.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bsg2v3yj2md0" path="res://ui.tscn" id="6_7mycd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("3_lquwl")
+region = Rect2(9, 9, 13, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(12, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
+size = Vector2(16, 16)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lquwl"]
+
+[node name="Node2D" type="Node2D" unique_id=1193280519]
+
+[node name="Knight" type="CharacterBody2D" parent="." unique_id=273196788]
+position = Vector2(8, -27)
+floor_stop_on_slope = false
+script = ExtResource("2_1bvp3")
+
+[node name="Knight" type="Sprite2D" parent="Knight" unique_id=2061209176]
+texture = SubResource("AtlasTexture_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knight" unique_id=807571024]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="Map" type="Node2D" parent="." unique_id=1525631653]
+
+[node name="Block" type="StaticBody2D" parent="Map" unique_id=22123835]
+position = Vector2(8, -8)
+scale = Vector2(7.4399986, 1)
+
+[node name="Knight2" type="Sprite2D" parent="Map/Block" unique_id=843877423]
+texture = SubResource("AtlasTexture_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block" unique_id=1789994115]
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Block2" type="StaticBody2D" parent="Map" unique_id=1649843125]
+position = Vector2(-188, 21)
+rotation = 1.1849937
+scale = Vector2(8.199998, 1)
+
+[node name="Knight2" type="Sprite2D" parent="Map/Block2" unique_id=1632547084]
+texture = SubResource("AtlasTexture_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block2" unique_id=2071239938]
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Block3" type="StaticBody2D" parent="Map" unique_id=872164848]
+position = Vector2(-160.00002, 69)
+rotation = 0.57451606
+scale = Vector2(8.199998, 1)
+
+[node name="Knight2" type="Sprite2D" parent="Map/Block3" unique_id=1959124503]
+texture = SubResource("AtlasTexture_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block3" unique_id=1145258129]
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Block4" type="StaticBody2D" parent="Map" unique_id=109876558]
+position = Vector2(-93.000015, 100)
+rotation = 0.13032235
+scale = Vector2(8.199998, 1)
+
+[node name="Knight2" type="Sprite2D" parent="Map/Block4" unique_id=1005015816]
+texture = SubResource("AtlasTexture_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block4" unique_id=393301465]
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Block5" type="StaticBody2D" parent="Map" unique_id=1907217697]
+position = Vector2(107, 116)
+scale = Vector2(8.199998, 1)
+
+[node name="Knight2" type="Sprite2D" parent="Map/Block5" unique_id=84982825]
+texture = SubResource("AtlasTexture_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block5" unique_id=125551268]
+shape = SubResource("RectangleShape2D_272bh")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1840809632 node_paths=PackedStringArray("target")]
+position = Vector2(8, -27)
+zoom = Vector2(2.815, 2.815)
+position_smoothing_enabled = true
+script = ExtResource("4_1bvp3")
+target = NodePath("../Knight")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1868839383]
+
+[node name="Control2" parent="CanvasLayer" unique_id=1802615836 instance=ExtResource("6_7mycd")]
+
+[node name="CardHand" type="Node2D" parent="CanvasLayer" unique_id=1114780679]
+position = Vector2(900, 545)
+
+[node name="Card" parent="CanvasLayer/CardHand" unique_id=1399974090 instance=ExtResource("5_lquwl")]
+position = Vector2(60, 97)
+
+[node name="Card2" parent="CanvasLayer/CardHand" unique_id=1652174783 instance=ExtResource("5_lquwl")]
+position = Vector2(116, 97)
+text = "Temp Text2"
+
+[node name="Card3" parent="CanvasLayer/CardHand" unique_id=539780209 instance=ExtResource("5_lquwl")]
+position = Vector2(172, 97)
+text = "Temp Text3"
+
+[node name="DeathZone" type="StaticBody2D" parent="." unique_id=1017352379]
+position = Vector2(8, 266)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1547589682]
+shape = SubResource("WorldBoundaryShape2D_lquwl")
