@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm2srf7mg5jp1"]
 
 [ext_resource type="Texture2D" uid="uid://djlgvbigheovh" path="res://card_frame_back_blue.png" id="1_kikvd"]
-[ext_resource type="Script" uid="uid://medfm0n5ni1b" path="res://card.gd" id="1_rjlel"]
+[ext_resource type="Script" uid="uid://medfm0n5ni1b" path="res://scripts/card.gd" id="1_rjlel"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rjlel"]
 font_size = 8

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bov2g4coquf4u"]
 
-[ext_resource type="Texture2D" uid="uid://c3lca164r3prg" path="res://world_tileset.png" id="1_h2yge"]
-[ext_resource type="Script" uid="uid://gwjlibdysaqb" path="res://knight.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://gwjlibdysaqb" path="res://scripts/knight.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://g8t2e55mw70x" path="res://objects/platform.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ch1t25c21bmv5" path="res://knight.png" id="3_lquwl"]
-[ext_resource type="Script" uid="uid://c3gdn1tdgw500" path="res://follow.gd" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dm2srf7mg5jp1" path="res://card.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bsg2v3yj2md0" path="res://ui.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c3gdn1tdgw500" path="res://scripts/follow.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dm2srf7mg5jp1" path="res://objects/card.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bsg2v3yj2md0" path="res://objects/ui.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://upf75l0j88eb" path="res://scripts/map_position.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://o3mf5ogcd1ck" path="res://scripts/platform_summoner.gd" id="8_5vw27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
 atlas = ExtResource("3_lquwl")
@@ -14,19 +16,17 @@ region = Rect2(9, 9, 13, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(12, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
-atlas = ExtResource("1_h2yge")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
-size = Vector2(16, 16)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lquwl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7mycd"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_272bh"]
+normal = Vector2(-1, 0)
 
 [node name="Node2D" type="Node2D" unique_id=1193280519]
 
 [node name="Knight" type="CharacterBody2D" parent="." unique_id=273196788]
-position = Vector2(8, -27)
 floor_stop_on_slope = false
 script = ExtResource("2_1bvp3")
 
@@ -38,65 +38,23 @@ shape = SubResource("RectangleShape2D_kek77")
 
 [node name="Map" type="Node2D" parent="." unique_id=1525631653]
 
-[node name="Block" type="StaticBody2D" parent="Map" unique_id=22123835]
-position = Vector2(8, -8)
-scale = Vector2(7.4399986, 1)
+[node name="Block" parent="Map" unique_id=880327374 instance=ExtResource("3_7mycd")]
+position = Vector2(-2, 31)
 
-[node name="Knight2" type="Sprite2D" parent="Map/Block" unique_id=843877423]
-texture = SubResource("AtlasTexture_7mycd")
+[node name="Block3" parent="Map" unique_id=1239674093 instance=ExtResource("3_7mycd")]
+position = Vector2(379, -97)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block" unique_id=1789994115]
-shape = SubResource("RectangleShape2D_272bh")
+[node name="Block4" parent="Map" unique_id=661321744 instance=ExtResource("3_7mycd")]
+position = Vector2(401, 110)
 
-[node name="Block2" type="StaticBody2D" parent="Map" unique_id=1649843125]
-position = Vector2(-188, 21)
-rotation = 1.1849937
-scale = Vector2(8.199998, 1)
-
-[node name="Knight2" type="Sprite2D" parent="Map/Block2" unique_id=1632547084]
-texture = SubResource("AtlasTexture_7mycd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block2" unique_id=2071239938]
-shape = SubResource("RectangleShape2D_272bh")
-
-[node name="Block3" type="StaticBody2D" parent="Map" unique_id=872164848]
-position = Vector2(-160.00002, 69)
-rotation = 0.57451606
-scale = Vector2(8.199998, 1)
-
-[node name="Knight2" type="Sprite2D" parent="Map/Block3" unique_id=1959124503]
-texture = SubResource("AtlasTexture_7mycd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block3" unique_id=1145258129]
-shape = SubResource("RectangleShape2D_272bh")
-
-[node name="Block4" type="StaticBody2D" parent="Map" unique_id=109876558]
-position = Vector2(-93.000015, 100)
-rotation = 0.13032235
-scale = Vector2(8.199998, 1)
-
-[node name="Knight2" type="Sprite2D" parent="Map/Block4" unique_id=1005015816]
-texture = SubResource("AtlasTexture_7mycd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block4" unique_id=393301465]
-shape = SubResource("RectangleShape2D_272bh")
-
-[node name="Block5" type="StaticBody2D" parent="Map" unique_id=1907217697]
-position = Vector2(107, 116)
-scale = Vector2(8.199998, 1)
-
-[node name="Knight2" type="Sprite2D" parent="Map/Block5" unique_id=84982825]
-texture = SubResource("AtlasTexture_7mycd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Block5" unique_id=125551268]
-shape = SubResource("RectangleShape2D_272bh")
+[node name="Block2" parent="Map" unique_id=133319257 instance=ExtResource("3_7mycd")]
+position = Vector2(224, 68)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1840809632 node_paths=PackedStringArray("target")]
 position = Vector2(8, -27)
-zoom = Vector2(2.815, 2.815)
-position_smoothing_enabled = true
+zoom = Vector2(1.5, 1.5)
 script = ExtResource("4_1bvp3")
-target = NodePath("../Knight")
+target = NodePath("../MapPosition")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1868839383]
 
@@ -116,8 +74,31 @@ text = "Temp Text2"
 position = Vector2(172, 97)
 text = "Temp Text3"
 
-[node name="DeathZone" type="StaticBody2D" parent="." unique_id=1017352379]
-position = Vector2(8, 266)
+[node name="DeathZone" type="StaticBody2D" parent="." unique_id=1017352379 node_paths=PackedStringArray("target")]
+script = ExtResource("4_1bvp3")
+target = NodePath("../MapPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=1547589682]
+position = Vector2(0, 178)
 shape = SubResource("WorldBoundaryShape2D_lquwl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone" unique_id=638428028]
+position = Vector2(-312, 0)
+shape = SubResource("WorldBoundaryShape2D_7mycd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone" unique_id=492061418]
+position = Vector2(312, 0)
+shape = SubResource("WorldBoundaryShape2D_272bh")
+
+[node name="MapPosition" type="Node2D" parent="." unique_id=1241590286]
+script = ExtResource("7_272bh")
+speed = 20.0
+
+[node name="PlatformSummoner" type="Node" parent="." unique_id=494449564 node_paths=PackedStringArray("summon_into", "summon_origin")]
+script = ExtResource("8_5vw27")
+summon_into = NodePath("../Map")
+summon_origin = NodePath("../MapPosition")
+
+[node name="SummonTimer" type="Timer" parent="PlatformSummoner" unique_id=454402826]
+wait_time = 10.0
+autostart = true

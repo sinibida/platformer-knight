@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 100.0
 @export var dash_speed: float = 250.0
-@export var jump_power: float = 300.0
+@export var jump_power: float = 400.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
 var remaining_jump = 2;
